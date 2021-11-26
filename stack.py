@@ -1,6 +1,7 @@
 #Stack Queue
 
-'''1)	Given a stack of integers, write a python program that updates the input stack such that all occurrences of the smallest values are at the bottom of the stack, while the order of the other elements remains the same.
+'''1)	Given a stack of integers, write a python program that updates the input stack such that all occurrences of the smallest values 
+are at the bottom of the stack, while the order of the other elements remains the same.
 
 For example:
 Input stack (top-bottom) :   5 66  5  8  7
@@ -86,7 +87,8 @@ change_smallest_value(number_stack)
 print("After the change:")
 number_stack.display()
 
-'''2.) Modify the Stack program to include pop(), is_empty() and display() methods to implement the pop operation based on the algorithm discussed and display the element(s) of the stack from top to bottom.
+'''2.) Modify the Stack program to include pop(), is_empty() and display() methods to implement the pop operation based on the algorithm discussed 
+and display the element(s) of the stack from top to bottom.
 Once done, pop five times from the stack and display the removed elements. Try to pop sixth time and observe the results.
 '''
 class Stack:
