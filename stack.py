@@ -1,4 +1,4 @@
-#Stack Queue
+#Stack
 
 '''1)	Given a stack of integers, write a python program that updates the input stack such that all occurrences of the smallest values 
 are at the bottom of the stack, while the order of the other elements remains the same.
