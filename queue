@@ -1,0 +1,311 @@
+class Queue:
+    def __init__(self,max_size):
+        self.__max_size=max_size
+        self.__elements=[None]*self.__max_size
+        self.__rear=-1
+        self.__front=0
+
+    def get_max_size(self):
+        return self.__max_size
+
+    def is_full(self):
+        if (self.__rear==self.__max_size-1):
+            return True
+        else:
+            return False
+
+    def enqueue(self,data):
+        if (self.is_full()):
+            print("Overflow")
+        else:
+            self.__rear+=1
+            self.__elements[self.__rear]=data
+
+    def is_empty(self):
+        if(self.__front > self.__rear):
+            return True
+        else:
+            return False
+
+    def dequeue(self):
+        if(self.is_empty()):
+            print("underflow")
+        else:
+            data=self.__elements[self.__front]
+            self.__front+=1
+            return data
+
+    def display(self):
+        for index in range(self.__front,self.__rear+1):
+            print(self.__elements[index])
+
+queue1=Queue(5)
+queue1.enqueue("s")
+queue1.enqueue("t")
+queue1.enqueue("r")
+queue1.enqueue("g")
+queue1.enqueue("i")
+print("queue is ")
+queue1.display()
+#queue1.enqueue("h")
+queue1.dequeue()
+#print("after change")
+queue1.dequeue()
+queue1.dequeue()
+queue1.dequeue()
+queue1.dequeue()
+queue1.dequeue()
+
+
+
+
+
+'''
+Given a queue of whole numbers. Write a python function to return a new queue which contains the evenly divisible numbers.
+Note: A number is said to be evenly divisible if it is divisible by all the numbers in the given range without any remainder. 
+Consider the range to be from 1 to 10 (both inclusive).
+Assume that there will always be few elements in the input queue, which are evenly divisible by the numbers in the mentioned range.
+
+Example:
+
+Input Queue: 13983, 10080, 7113, 2520, 2500 (front - rear)
+Output Queue: 10080, 2520 (front-rear)
+
+'''
+
+class Queue:
+    def __init__(self,max_size):
+        self.__max_size=max_size
+        self.__elements=[None]*self.__max_size
+        self.__rear=-1
+        self.__front=0
+
+    def get_max_size(self):
+        return self.__max_size
+
+    def is_full(self):
+        if (self.__rear==self.__max_size-1):
+            return True
+        else:
+            return False
+
+    def enqueue(self,data):
+        if (self.is_full()):
+            print("Overflow")
+        else:
+            self.__rear+=1
+            self.__elements[self.__rear]=data
+
+    def is_empty(self):
+        if(self.__front > self.__rear):
+            return True
+        else:
+            return False
+
+    def dequeue(self):
+        if(self.is_empty()):
+            print("underflow")
+        else:
+            data=self.__elements[self.__front]
+            self.__front+=1
+            return data
+
+    def display(self):
+        for index in range(self.__front,self.__rear+1):
+            print(self.__elements[index])
+
+def check_numbers(number_queue):
+    solution_queue=Queue(5)
+    while(not number_queue.is_empty()):
+        status=0
+        element=number_queue.dequeue()
+        for i in range(1,11):
+            if element%i!=0:
+                status=1
+                break
+        if status==0:
+            solution_queue.enqueue(element)
+    return solution_queue
+
+number_queue=Queue(5)
+number_queue.enqueue(13983)
+number_queue.enqueue(10080)
+number_queue.enqueue(7113)
+number_queue.enqueue(2520)
+number_queue.enqueue(2500)
+
+print("input queue")
+number_queue.display()
+
+#print(check_numbers(number_queue))
+check=check_numbers(number_queue)
+print("output")
+check.display()
+
+
+'''
+Given two queues, one integer queue and another character queue, 
+write a python program to merge them to form a single queue.  
+Follow the below rules for merging:
+•	Merge elements at the same position starting with the integer queue.
+•	If one of the queues has more elements than the other, add all the additional elements at the end of the output queue.
+
+Note : max_size of the merged queue should be the sum of the size of both the queues. 
+
+For example,  
+
+Input -- queue1: 3,6,8     queue2: b,y,u,t,r,o
+Output -- 3,b,6,y,8,u,t,r,o
+
+'''
+class Queue:
+    def __init__(self,max_size):
+        self.__max_size=max_size
+        self.__elements=[None]*self.__max_size
+        self.__rear=-1
+        self.__front=0
+
+    def get_max_size(self):
+        return self.__max_size
+
+    def is_full(self):
+        if (self.__rear==self.__max_size-1):
+            return True
+        else:
+            return False
+
+    def enqueue(self,data):
+        if (self.is_full()):
+            print("Overflow")
+        else:
+            self.__rear+=1
+            self.__elements[self.__rear]=data
+
+    def is_empty(self):
+        if(self.__front > self.__rear):
+            return True
+        else:
+            return False
+
+    def dequeue(self):
+        if(self.is_empty()):
+            print("underflow")
+        else:
+            data=self.__elements[self.__front]
+            self.__front+=1
+            return data
+
+    def display(self):
+        for index in range(self.__front,self.__rear+1):
+            print(self.__elements[index])
+
+def merge_queue(queue1,queue2):
+    queue3=Queue(queue1.get_max_size()+queue2.get_max_size())
+    l=queue1.get_max_size()+queue2.get_max_size()
+    print(l)
+    for i in range(l):
+        if not queue1.is_empty():
+            queue3.enqueue(queue1.dequeue())
+        if not queue2.is_empty():
+            queue3.enqueue(queue2.dequeue())
+    merged_queue=queue3
+    return merged_queue
+
+queue1=Queue(3)
+queue2=Queue(6)
+queue1.enqueue(3)
+queue1.enqueue(6)
+queue1.enqueue(8)
+queue2.enqueue("b")
+queue2.enqueue("y")
+queue2.enqueue("u")
+queue2.enqueue("t")
+queue2.enqueue("r")
+queue2.enqueue("o")
+
+merged_queue=merge_queue(queue1,queue2)
+print("after merging")
+merged_queue.display()
+
+
+'''
+Write a python function which accepts two sorted stacks and 
+returns a new stack containing all the elements of input stacks in sorted order.
+ 
+Note: The output stack should be of the size as that of the sum of the sizes of the input stacks.
+ 
+Sample Input	                           Expected Output
+Stack1 (top - bottom): 7,6,5
+Stack2 (top - bottom): 3,2,1	            Stack (top-bottom) : 7,6,5,3,2,1
+
+Stack1 (top - bottom): 15,10,3
+Stack2 (top - bottom): 21,9,7	            Stack (top-bottom) : 21,15,10,9,7,3
+
+'''
+
+class Stack:
+    def __init__(self,max_size):
+        self.__max_size=max_size
+        self.__elements=[None]*self.__max_size
+        self.__top=-1
+
+    def is_full(self):
+        if(self.__top==self.__max_size-1):
+            return True
+        return False
+
+    def is_empty(self):
+        if(self.__top==-1):
+            return True
+        return False
+
+    def push(self,data):
+        if(self.is_full()):
+            print("The stack is full!!")
+        else:
+            self.__top+=1
+            self.__elements[self.__top]=data
+
+    def pop(self):
+        if(self.is_empty()):
+            print("The stack is empty!!")
+        else:
+            data= self.__elements[self.__top]
+            self.__top-=1
+            return data
+
+    def display(self):
+        if(self.is_empty()):
+            print("The stack is empty")
+        else:
+            index=self.__top
+            while(index>=0):
+                print(self.__elements[index])
+                index-=1
+
+    def get_max_size(self):
+        return self.__max_size
+
+def merge_stack(stack1,stack2):
+    l=[]
+    stack3=Stack(stack1.get_max_size()+stack2.get_max_size())
+    while(not stack1.is_empty()):
+        l.append(stack1.pop())
+    while(not stack2.is_empty()):
+        l.append(stack2.pop())
+    l.sort()
+    for element in l:
+        stack3.push(element)
+    return stack3
+
+stack1=Stack(3)
+stack2=Stack(3)
+stack1.push(5)
+stack1.push(6)
+stack1.push(7)
+stack2.push(1)
+stack2.push(2)
+stack2.push(3)
+
+output_stack=merge_stack(stack1,stack2)
+output_stack.display()
