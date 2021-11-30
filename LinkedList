@@ -69,20 +69,20 @@ class LinkedList:
     def delete(self,data):
         node=self.find_node(data)
         if (node is not None):  #if data is found and not empty
-            if(node==self.head):
-                if(self.head==self.tail):
+            if(node==self.head):     #if data is head
+                if(self.head==self.tail):  
                     self.tail=None
                 self.head=node.get_next()
             else:
                 temp=self.head
-                while(temp is not None ):
-                    if(temp.get_next()==node):
-                        temp.set_next(node.get_next())
-                        if(node==self.tail):
-                            self.tail=temp
-                        node.set_next(None)
+                while(temp is not None ):  #to travel till that element
+                    if(temp.get_next()==node):   #if next element is ur data to be deleted
+                        temp.set_next(node.get_next())   #set before element next to node
+                        if(node==self.tail):   #if element deleted is tail
+                            self.tail=temp #set previous element as tail
+                        node.set_next(None)  
                         break
-                    temp=temp.get_next()
+                    temp=temp.get_next()    #else travel till the next element is found
             print("element deleted")
         else:
             print(data," is not present in linkedlist")
